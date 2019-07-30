@@ -113,9 +113,9 @@
 # print(list2)    #在尾部增加。
 #
 #
-# list3 = [1,100,3.14,[12,15],"hello","juner"]
-# list3.insert(3,"你好")    #  插入元素，(想放的位置，放入的值)
-# print(list3)
+list3 = [1,100,3.14,[12,15],"hello","juner"]
+list3.insert(3,"你好啊")    #  插入元素，(想放的位置，放入的值)
+print(list3)
 
 # 合并列表的两种方法
 # list4 = [1,100,3.14,[12,15],"hello","juner"]
