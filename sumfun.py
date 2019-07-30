@@ -16,4 +16,4 @@ def get_sum2(start,end,step=1):
     print(sum_date)
 # print(get_sum2(1,100,2))
 
-print("引用结束")
+print("引用结束啊")
