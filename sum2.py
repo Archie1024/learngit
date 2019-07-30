@@ -6,4 +6,4 @@ def get_sum(start,end,step=1):
         zhonghe += start
         start += step
     print(zhonghe)
-print("结束")
+print("结束啦")
