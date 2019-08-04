@@ -8,6 +8,7 @@
 # print(type({})) #字典
 # print(type(())) #元组
 
+
 """加减乘数取模乘方"""
 # print(2+2)
 # print(2*2)

@@ -35,9 +35,9 @@
 A old lady come in, the name is Mary,level 312
 A pretty boy come in,the name is Archie,level 32232432
 """
-def get_name(srcstr):
-    #函数体
-    name = srcstr.split("is")[1].split(",")[0].strip()#以the name is 切开，下标取1，取到第二段,再以逗号切，取第一个，去空格
-    return name
-inStr = input("输入信息：")
-print(get_name(inStr))
+# def get_name(srcstr):
+#     #函数体
+#     name = srcstr.split("is")[1].split(",")[0].strip()#以the name is 切开，下标取1，取到第二段,再以逗号切，取第一个，去空格
+#     return name
+# inStr = input("输入信息：")
+# print(get_name(inStr))

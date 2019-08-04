@@ -29,20 +29,20 @@
 #     # print(List)
 #     print(binarySearch(List,77))
 
-def search_x(nums,x):
-    start = 0
-    end = len(nums)
-    while start <= end:
-        middle = (start+end)//2
-        if  nums[middle] > x:  #(中间的都比X大，去尾操作)
-            end = middle - 1
-        elif nums[middle] < x:
-            start = middle + 1
-        else:
-            return middle
-    return -1
-
-if __name__ == "__main__":
-    List = [1,3,9,77,100,222,555,3333,44444]
-    # print(List)
-    print(search_x(List,444))
+# def search_x(nums,x):
+#     start = 0
+#     end = len(nums)
+#     while start <= end:
+#         middle = (start+end)//2
+#         if  nums[middle] > x:  #(中间的都比X大，去尾操作)
+#             end = middle - 1
+#         elif nums[middle] < x:
+#             start = middle + 1
+#         else:
+#             return middle
+#     return -1
+#
+# if __name__ == "__main__":
+#     List = [1,3,9,77,100,222,555,3333,44444]
+#     # print(List)
+#     print(search_x(List,444))
