@@ -66,7 +66,10 @@
 # #可以加while，可以判断是否有逗号，可以判断是否是int。
 #-----------------------------------------------------------------------------------------
 
-"""题目，假设以下字符串log是一个log文件，每行的第一列是文件类型，第二列是文件大小，统计每种文件类型的总大小"""
+
+"""题目，假设以下字符串log是一个log文件，每行的第一列是文件类型，第二列是文件大小，求统计每种文件类型的总大小"""
+
+
 log = """
 f20180111014341/i_51a7hC3W.jpeg	169472	FrITJxleSP7wUD-MWw-phL_KP6Eu	15156063244230469	image/jpeg	0
 f20180111014341/j_R0Hpl4EG.json	1036	ForGzwzV3e-uR3_UzvppJs1VgfQG	15156064773253144	application/json	0
@@ -114,75 +117,70 @@ f20180111151741/i_JuSWztB3.jpg	92506	FrIjRevHSi6xv4-NQa2wrHu5a1zQ	15156550875370
 f20180111153550/i_9wWzVenl.gif	769872	FvslKY9JUaCQm-lu02E34tvAP_oG	15156561674621628	image/gif	0
 """
 #
-"""--------------------------------------正确答案-----------------------------------------------"""
-res = []
-line_list = log.split("\n")
-# print(line_list)
-for line in line_list:#遍历，提取每一行的文件类型和大小
-    if line == "":#过滤空字符串
-        continue
-    temp = line.split("\t")
-    file_type = temp[0].split(".")[-1]#以标点符号获得文件类型
-    file_size = int(temp[1].strip())#去空格，转成int型，为累加操作做准备
-    # print(file_type,file_size)
-    inflag = False
-    for one in  res:   #[[],[],[].[].[],[]]的列表格式去匹配新增，如果是新的就要新增，如果发现匹配的上就累加大小
-        if file_type == one[0]:#去匹配这一行的文件类型。
-            one[1] += file_size
-            inflag = True#匹配成功！！
-            break   #成功后面的就不要匹配了。跳出匹配，匹配结束
-    if  inflag == False:#for当前list，如果标志位状态没变，匹配失败，新增文件大小和类型。
-        res.append([file_type,file_size])
-print(res)
+"""--------------------------------------用标志位可以得到，正确答案-----------------------------------------------"""
+# res = []
+# line_list = log.split("\n")
+# # print(line_list)
+# for line in line_list:#遍历，提取每一行的文件类型和大小
+#     if line == "":#过滤空字符串
+#         continue
+#     temp = line.split("\t")
+#     file_type = temp[0].split(".")[-1]#以标点符号获得文件类型
+#     file_size = int(temp[1].strip())#去空格，转成int型，为累加操作做准备
+#     # print(file_type,file_size)
+#     inflag = False
+#     for one in  res:   #[[],[],[].[].[],[]]的列表格式去匹配新增，如果是新的就要新增，如果发现匹配的上就累加大小
+#         if file_type == one[0]:#去匹配这一行的文件类型。
+#             one[1] += file_size
+#             inflag = True#匹配成功！！
+#             break   #成功后面的就不要匹配了。跳出匹配，匹配结束
+#     if  inflag == False:#for当前list，如果标志位状态没变，匹配失败，新增文件大小和类型。
+#         res.append([file_type,file_size])
+# print(res)
 """-------------------------逻辑好像一致，为什么用else不用标志位就得不到正确答案----------------------------"""
-res = []
-line_list = log.split("\n")
-# print(line_list)
-for line in line_list:#遍历，提取每一行的文件类型和大小
-    if line == "":#过滤空字符串
-        continue
-    temp = line.split("\t")
-    file_type = temp[0].split(".")[-1]#以标点符号获得文件类型
-    file_size = int(temp[1].strip())#去空格，转成int型，为累加操作做准备
-    # print(file_type,file_size)
-    for one in  res:   #[[],[],[].[].[],[]]的列表格式去匹配新增，如果是新的就要新增，如果发现匹配的上就累加大小
-        if file_type == one[0]:#去匹配这一行的文件类型。
-            one[1] += file_size
-            inflag = True#匹配成功！！
-            break   #成功后面的就不要匹配了。跳出匹配，匹配结束
-        else:
-            res.append([file_type,file_size])
-print(res)  #为什么不行，为什么不行！！！！！！！！！！
+# res = []
+# line_list = log.split("\n")
+# # print(line_list)
+# for line in line_list:#遍历，提取每一行的文件类型和大小
+#     if line == "":#过滤空字符串
+#         continue
+#     temp = line.split("\t")
+#     file_type = temp[0].split(".")[-1]#以标点符号获得文件类型
+#     file_size = int(temp[1].strip())#去空格，转成int型，为累加操作做准备
+#     # print(file_type,file_size)
+#     for one in  res:   #[[],[],[].[].[],[]]的列表格式去匹配新增，如果是新的就要新增，如果发现匹配的上就累加大小
+#         if file_type == one[0]:#去匹配这一行的文件类型。
+#             one[1] += file_size
+#             break   #成功后面的就不要匹配了。跳出匹配，匹配结束
+#         else:
+#             res.append([file_type,file_size])
+# print(res)  #为什么不行，为什么不行！！！！！！！！！！
+"""第一次for的时候one不存在，所以不会进入for循环
+把添加one的逻辑写在for里面，就永远不会有one，自锁了
+也就是说第一次for的时候，for了一个空，没有运行下面的代码。"""
 
-"""-------------------------------------------错误写法，为什么可以得到正确答案----------------------------------"""
-res = []
-line_list = log.split("\n")
-# print(line_list)
-for line in line_list:#遍历，提取每一行的文件类型和大小
-    if line == "":#过滤空字符串
-        continue
-    temp = line.split("\t")
-    file_type = temp[0].split(".")[-1]#以标点符号获得文件类型
-    file_size = int(temp[1].strip())#去空格，转成int型，为累加操作做准备
-    # print(file_type,file_size)
-    for one in  res:   #[[],[],[].[].[],[]]的列表格式去匹配新增，如果是新的就要新增，如果发现匹配的上就累加大小
-        if file_type == one[0]:#去匹配这一行的文件类型。
-            one[1] += file_size
-            inflag = True#匹配成功！！
-            break   #成功后面的就不要匹配了。跳出匹配，匹配结束
-    else:
-        res.append([file_type, file_size])
-print(res)  #为什么不行，为什么不行！！！！！！！！！！
-
-
-
-
-
-
-
-
+"""--------------------错误写法2，为什么可以得到正确答案----------------------------------"""
+# res = []
+# line_list = log.split("\n")
+# # print(line_list)
+# for line in line_list:#遍历，提取每一行的文件类型和大小
+#     if line == "":#过滤空字符串
+#         continue
+#     temp = line.split("\t")
+#     file_type = temp[0].split(".")[-1]#以标点符号获得文件类型
+#     file_size = int(temp[1].strip())#去空格，转成int型，为累加操作做准备
+#     # print(file_type,file_size)
+#     for one in  res:   #[[],[],[].[].[],[]]的列表格式去匹配新增，如果是新的就要新增，如果发现匹配的上就累加大小
+#         if file_type == one[0]:#去匹配这一行的文件类型。
+#             one[1] += file_size
+#             inflag = True#匹配成功！！
+#             break   #成功后面的就不要匹配了。跳出匹配，匹配结束
+#     else:
+#         res.append([file_type, file_size])
+# print(res)  #为什么又可以了，为什么又可以啦
 
 #------------------------------------创建一个列表oldlist,按照从大小排列到一个新的列表里面-----------------------------
+
 #方法一，直接排序
 # oldlist = [123,13,4,6,31231231,5345]
 # newlist = oldlist.sort()
@@ -218,8 +216,6 @@ print(res)  #为什么不行，为什么不行！！！！！！！！！！
 #     return newlist
 #
 # print(sort_list([123,13,4,6,31231231,5345]))
-
-
 
 #--------------------------------不用下标，直接remove，方便理解-------------------------------
 # def sort_list(inlist):
