@@ -1,3 +1,6 @@
+# 找到python编辑器的路径
+# import sys
+# print(sys.path)
 
 """数据类型"""
 # print("hello world")
