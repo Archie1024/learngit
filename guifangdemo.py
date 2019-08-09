@@ -47,94 +47,6 @@
 #     # print(List)
 #     print(search_x(List,444))
 #-----------------------------------一个围棋有关的demo--------------------------------------------------
-def checkline(pts):
-    """把list按照下标单双分为两个新list"""
-    for one in pts:
-        # print(pts.index(one))
-        if pts.index(one)%2 == 1:
-            redp_list.append(one)
-        else:
-            blap_list.append(one)
-
-def qiefen_panduan(A,B):
-    """切分出组合出三位字符串并判断是否存在"""
-    #判断红子横坐标
-    action = len(A)
-    while action > 0:
-        p_count = 3
-        san = ""
-        for one in A:
-            if len(one) == 3:
-                linshi = one[-2:]
-                # print(linshi)
-            else:
-                linshi = one[-1]
-                # print(linshi)
-            san += linshi
-            # print(san)
-            p_count -= 1
-            if p_count == 0:
-                break
-        action -= 1
-        if len(A) > 3:
-            del A[0]
-        # print(san)
-        if san in abscissa:
-            print("红字连成一条直线，直线横坐标是{}".format(san))
-    #判断黑子横坐标
-    action = len(B)
-    while action > 0:  #这里可以大于3，就可以少一个逻辑优化。
-        p_count = 3
-        san = ""
-        for one in B:
-            if len(one) == 3:
-                linshi = one[-2:]
-                # print(linshi)
-            else:
-                linshi = one[-1]
-                # print(linshi)
-            san += linshi
-            # print(san)
-            p_count -= 1
-            if p_count == 0:
-                break
-        action -= 1
-        if len(B) > 3:
-            del B[0]
-        # print(san)
-        if san in abscissa:
-            print("黑子连成一条直线，直线横坐标是{}".format(san))
-    #判断红子纵坐标
-    action = len(A)
-    while action > 0:
-        p_count = 3
-        san = ""
-        for one in A:
-            linshi = one[0]
-            print(linshi)
-            san += linshi
-            print(san)
-            p_count -= 1
-            if p_count == 0:
-                break
-        action -= 1
-        if len(A) > 3:
-            del A[0]
-        print(san)
-        if san in abscissa:
-            print("红子连成一条直线，直线纵坐标是{}".format(san))
-
-
-abscissa = "12345678910111213141516171819"
-ordinate = "ABCDEFGHJKLMNOPQRST"
-luozhi = ["Q16","D4","Q4","D16","F3","C6","F17","R17","Q17","R16","R14","R15","Q15"]
-redp_list = []  #红字坐标['D4', 'D16', 'C6', 'R17', 'R16', 'R15']
-blap_list = []  #黑子坐标['Q16', 'Q4', 'F3', 'F17', 'Q17', 'R14', 'Q15']
-redp_list = []
-checkline(luozhi)
-# print(type(redp_list),redp_list)
-qiefen_panduan(redp_list,blap_list)
-#-------------------------------------这个是差不多的逻辑啦，这个差一点啦---------------------------------
 # def checkline(pts):
 #     """把list按照下标单双分为两个新list"""
 #     for one in pts:
@@ -222,6 +134,89 @@ qiefen_panduan(redp_list,blap_list)
 # checkline(luozhi)
 # # print(type(redp_list),redp_list)
 # qiefen_panduan(redp_list,blap_list)
+#-------------------------------------这个是差不多的逻辑啦，这个差一点啦---------------------------------
+def checkline(pts):
+    """把list按照下标单双分为两个新list，也就是分为红黑两方的子"""
+    for one in pts:
+        # print(pts.index(one))
+        if pts.index(one)%2 == 1:
+            redp_list.append(one)
+        else:
+            blap_list.append(one)
+
+def qiefen_panduan(A):
+    """切分组合坐标字符串并判断是否存在"""
+    # 判断棋子横坐标是否在棋盘中存在直线
+    realA = A
+    AA = A
+    action = len(AA)
+    while action >= 3:
+        p_count = 3
+        san = ""
+        for one in A:
+            if len(one) == 3:
+                linshi = one[-2:]
+            else:
+                linshi = one[-1]
+            san += linshi
+            p_count -= 1
+            if p_count == 0:
+                break
+        action -= 1
+        del AA[0]
+        print(san)
+        if san in abscissa:
+            print("红字连成一条直线，直线横坐标是{}".format(san))
+
+    # 判断红字纵坐标是否在旗盘中存在直线
+    BB = realA
+    print(realA)
+    action2 = len(BB)
+    # print(len(BB))
+    while action2 >=3:
+        p_count2 = 3
+        san2 = ""
+        for one in A:
+            linshi2 = one[0]
+            san2 += linshi2
+            p_count2 -=1
+            if p_count2 == 0:
+                break
+        action2 -= 1
+        del BB[0]
+        print(san2)
+        if san2 in abscissa:
+            print("红子连成一条直线，直线纵坐标是{}".format(san2))
+
+abscissa = "12345678910111213141516171819"
+ordinate = "ABCDEFGHJKLMNOPQRST"
+luozhi = ["Q16","D4","Q4","D16","F3","C6","F17","R17","Q17","R16","R14","R15","Q15"]
+redp_list = []  #红字坐标['D4', 'D16', 'C6', 'R17', 'R16', 'R15']
+blap_list = []  #黑子坐标['Q16', 'Q4', 'F3', 'F17', 'Q17', 'R14', 'Q15']
+checkline(luozhi)
+print(type(redp_list),redp_list)
+qiefen_panduan(redp_list)
+
+def qiuzhu(A):
+    realA = A
+    BB = A
+    while 某条件:
+        "对BB进行修改操作"
+    CC = realA
+    while 某条件2:
+        "对CC进行操作"
+
+问：为什么CC不等于A ? 是被修改后的BB。
+我想在第二个while里面操作原始实参A，要怎么办？
+
+
+
+
+
+
+
+
+
 #------------------------------------------------------------------------------------------------------------
 # def checkline(pts):
 #     """把list按照下标单双分为两个新list"""
