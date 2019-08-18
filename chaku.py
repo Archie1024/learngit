@@ -1,14 +1,14 @@
 # import sys
-#   2 import MySQLdb
-#   3
-#   4 userId = int(sys.argv[1])
-#   5 planId = int(sys.argv[2])
-#   6 seq = userId % 32
-#   7
-#   8 host = "10.64.35.163"
-#   9 port = 8823
-#  10 user="test"
-#  11 password="123456"
+# import MySQLdb
+#
+# userId = int(sys.argv[1])
+# planId = int(sys.argv[2])
+# seq = userId % 32
+#
+# host = "10.64.35.163"
+# port = 8823
+# user="test"
+# password="123456"
 #  12 db="danube"
 #  13
 #  14 danube = MySQLdb.connect(

@@ -1294,24 +1294,24 @@ self就是实例本身！！自动传入！！
 
 
 
-class Sheep:#羊累
-    pass
-
-class Room:#房间类
-    pass
-
-class Tiger:#老虎类
-    class_name = "老虎"#类里面的变量叫静态属性，静态属性：类属性，共有属性
-    def __init__(self,inWeight = 200):#初始化方法，函数，在类里面叫方法，特有方法，后面跟实例属性，当创建实例的时候会被执行
-        # print("我被执行了")
-        self.weight = inWeight#再赋值，重新再赋值。实例属性是针对实例的
-
-T1 = Tiger(400)#创建T1的老虎实例！
-print(T1.weight)#每个个体的实例属性都不一样，属于每个单独的实例
-T2 = Tiger(inWeight=500)
-print(T2.weight)
-print(T1.class_name)#老虎类的公有属性，静态属性，可以用实例去调用
-print(Tiger.class_name)#也可以用类去调用公有属性，类属性，静态属性
+# class Sheep:#羊累
+#     pass
+#
+# class Room:#房间类
+#     pass
+#
+# class Tiger:#老虎类
+#     class_name = "老虎"#类里面的变量叫静态属性，静态属性：类属性，共有属性
+#     def __init__(self,inWeight = 200):#初始化方法，函数，在类里面叫方法，特有方法，后面跟实例属性，当创建实例的时候会被执行
+#         # print("我被执行了")
+#         self.weight = inWeight#再赋值，重新再赋值。实例属性是针对实例的
+#
+# T1 = Tiger(400)#创建T1的老虎实例！
+# print(T1.weight)#每个个体的实例属性都不一样，属于每个单独的实例
+# T2 = Tiger(inWeight=500)
+# print(T2.weight)
+# print(T1.class_name)#老虎类的公有属性，静态属性，可以用实例去调用
+# print(Tiger.class_name)#也可以用类去调用公有属性，类属性，静态属性
 
 #---------------------------------------python的深浅拷贝-------------------------------
 # l1 = [1,2,3,[11,22,33]]
