@@ -118,25 +118,25 @@ f20180111153550/i_9wWzVenl.gif	769872	FvslKY9JUaCQm-lu02E34tvAP_oG	1515656167462
 """
 #
 """--------------------------------------用标志位可以得到，正确答案-----------------------------------------------"""
-res = []
-line_list = log.split("\n")
-# print(line_list)
-for line in line_list:#遍历，提取每一行的文件类型和大小
-    if line == "":#过滤空字符串
-        continue
-    temp = line.split("\t")
-    file_type = temp[0].split(".")[-1]#以标点符号获得文件类型
-    file_size = int(temp[1].strip())#去空格，转成int型，为累加操作做准备
-    # print(file_type,file_size)
-    inflag = False
-    for one in  res:   #[[],[],[].[].[],[]]的列表格式去匹配新增，如果是新的就要新增，如果发现匹配的上就累加大小
-        if file_type == one[0]:#去匹配这一行的文件类型。
-            one[1] += file_size
-            inflag = True#匹配成功！！
-            break   #成功后面的就不要匹配了。跳出匹配，匹配结束
-    if  inflag == False:#for当前list，如果标志位状态没变，匹配失败，新增文件大小和类型。
-        res.append([file_type,file_size])
-print(res)
+# res = []
+# line_list = log.split("\n")
+# # print(line_list)
+# for line in line_list:#遍历，提取每一行的文件类型和大小
+#     if line == "":#过滤空字符串
+#         continue
+#     temp = line.split("\t")
+#     file_type = temp[0].split(".")[-1]#以标点符号获得文件类型
+#     file_size = int(temp[1].strip())#去空格，转成int型，为累加操作做准备
+#     # print(file_type,file_size)
+#     inflag = False
+#     for one in  res:   #[[],[],[].[].[],[]]的列表格式去匹配新增，如果是新的就要新增，如果发现匹配的上就累加大小
+#         if file_type == one[0]:#去匹配这一行的文件类型。
+#             one[1] += file_size
+#             inflag = True#匹配成功！！
+#             break   #成功后面的就不要匹配了。跳出匹配，匹配结束
+#     if  inflag == False:#for当前list，如果标志位状态没变，匹配失败，新增文件大小和类型。
+#         res.append([file_type,file_size])
+# print(res)
 """-------------------------逻辑好像一致，为什么用else不用标志位就得不到正确答案----------------------------"""
 # res = []
 # line_list = log.split("\n")
@@ -210,14 +210,14 @@ print(res)
 #             if minDate > one:   #说明假设的值不是最小，更新最小值
 #                 minDate  = one
 #                 minindx = idx
-#             idx +=1     #取一个one下标就加1,下标更新
+#             idx +=1     #取一个one下标就加1,下标更新，这是当前one的坐标
 #         newlist.append(minDate)
 #         del inlist[minindx]     #利用最小值下标删除最小值
 #     return newlist
 #
 # print(sort_list([123,13,4,6,31231231,5345]))
 
-#--------------------------------不用下标，直接remove，方便理解-------------------------------
+# #--------------------------------不用下标，直接remove，方便理解-------------------------------
 # def sort_list(inlist):
 #     newlist = []
 #     while len(inlist) > 0:
@@ -232,7 +232,6 @@ print(res)
 #     return newlist
 #
 # print(sort_list([123,13,4,6,31231231,5345]))
-
 
 #############################3读写文件，工资##############################################
 # 计算工资，这个是你感兴趣的
@@ -261,4 +260,3 @@ print(res)
 #         else:#没有分号的line进入此分支
 #             ourstr = "这一行没有分号，无法正常写入。"
 #         wfile.write(ourstr + "\n")#为什么在这里呢，因为这里已经是和第一个if并列的了，是if的最外层
-#
