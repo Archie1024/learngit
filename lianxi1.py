@@ -1291,40 +1291,106 @@ project视图，代码结构化视图
 self就是实例本身！！自动传入！！
 
 """
+# 获取随机数
+from random import randint   #为什么只能用这一种调用方式。
+print(randint(0,1))
+
+#获取当前时间,从1970年算起！
+# import time
+# print(time.time())
+
+#创建10个房间
+# rooms = []
+# for one in range(0,10):
+#     room_object = Room(one,animal)
+#     rooms.append(room_object)
 
 
 
 # class Sheep:#羊累
-#     pass
+#     class_name = "羊"
+#     def __init__(self,inWeight = 100):
+#         self.Weight = inWeight
+#     def roar(self):
+#         print("mei~~")
+#         self.Weight -= 5
+# #
+# class Tiger:#老虎类
+#     __age = 50  #定义不可被之类调用的属性
+#     class_name = "老虎"#类里面的变量叫静态属性，静态属性：类属性，共有属性
+#     def __init__(self,inWeight = 200):#初始化方法，后面跟实例属性，与其他方法的区别是当创建实例的时候会被执行
+#         self.Weight = inWeight#再赋值，重新再赋值。实例属性是针对实例的
+#     # @staticmethod  #  静态方法要用@staticmethod修饰的是静态方法。静态方法是类方法。
+#     # def tell():  #我是静态方法
+#     def roar(self):  #我叫实例方法
+#         print("wow!")
+#         self.Weight -= 5  #哪个实例叫，哪个实例减5斤
 #
 # class Room:#房间类
-#     pass
+#     def __innt__(self,num,animal):  #用初始化方法进行对象的组合
+#         self.num = num
+#         self.animal = animal
 #
-# class Tiger:#老虎类
-#     class_name = "老虎"#类里面的变量叫静态属性，静态属性：类属性，共有属性
-#     def __init__(self,inWeight = 200):#初始化方法，函数，在类里面叫方法，特有方法，后面跟实例属性，当创建实例的时候会被执行
-#         # print("我被执行了")
-#         self.weight = inWeight#再赋值，重新再赋值。实例属性是针对实例的
 #
 # T1 = Tiger(400)#创建T1的老虎实例！
-# print(T1.weight)#每个个体的实例属性都不一样，属于每个单独的实例
+# print(T1.Weight)#每个个体的实例属性都不一样，属于每个单独的实例
 # T2 = Tiger(inWeight=500)
-# print(T2.weight)
+# print(T2.Weight)
 # print(T1.class_name)#老虎类的公有属性，静态属性，可以用实例去调用
 # print(Tiger.class_name)#也可以用类去调用公有属性，类属性，静态属性
 
-#---------------------------------------python的深浅拷贝-------------------------------
-# l1 = [1,2,3,[11,22,33]]
-# l2 = l1
-# print(l2) #[1,2,3,[11,22,33]]
-# l2[3][2]='aaa'
-# print(l1) #[1, 2, 3, [11, 22, 'aaa']]
-# print(l2) #[1, 2, 3, [11, 22, 'aaa']]
-#修改l2,可以看到l1也被修改了,
+# -------------------------------------------------------------------------------------------
+"""对象的属性"""
+# 类里面的字节定义的变量叫静态属性，类属性，共有属性
+# 在初始化方法里面赋予的是动态属性，实例属性，私有属性
 
-# l1[0]= 0
-# print(l1) #[0, 2, 3, [11, 22, 'aaa']]
-# print(l2) #[1, 2, 3, [11, 22, 'aaa']]
-# print(id(l1)==id(l2)) #Flase
+"""对象的方法"""#对象的方法就是对象的行为，
+
+# 动态方法：每个具体实例的方法，又叫实例方法,调用方式    实例.方法，实例方法只能用实例访问，不能用类访问。
+# 特殊的实例方法，初始化实例方法，def __init__(self,inWeight = 200)
+# 后面跟实例属性，当创建实例的时候会被执行。
+
+# 静态方法：类共有的方法，与具体实例无关，（类方法），类可以直接调用，不需要实例。
+# 定义的时候用@staticmethod修饰，只能修饰一个。调用方式  类.方法   或   实例.方法，可以通过类访问。
 
 
+"""对象的组合"""
+# 通过初始化方法进行对象的组合
+# r1 = Room(1,Tiger(200))   #房间1里面有  房间号是房间1，动物是老师，通过初始化方法传进去。
+
+"""对象的继承"""
+#假设华南虎继承老虎,可以调用所有父类的静态方法，但是调用动态方法要初始化。
+# class STiger(Tiger):
+#     age = 20  #也可以自己定义属性和方法。
+#
+# class STiger(Tiger,Sheep):  #多继承，可以同时继承多个父类，如果有相同名字的属性，就先入为主，哪个父类在前，就用哪个。
+#     pass
+
+# class STiger(Tiger):
+#     def __init__(self,inWeight=200):    #之类初始化，要去调用父类的初始化方法。
+#         Tiger.__init__(self,inWeight)
+#     def roar(self):
+#         print("我是子类的方法")
+# ST = STiger()
+# print(ST.Weight)
+# ST.roar()  #调用之类重写的方法
+# super(STiger,ST).roar()  #在重写中调用父类的方法！格式super(子类类名,子类的实例名).方法，super相对于父类。
+
+#创建10个房间
+
+
+# rooms = []
+# for one in range(0,10):
+#     if randint(0,1) == 1:
+#         animal = Tiger
+#     else:
+#         animal = Sheep
+#     room_object = Room(one,animal)
+#     rooms.append(room_object)
+
+
+
+#--------------------------------------枚举 标值对-----------------------------------------------
+# alist = ["a","b","c"]
+# for one in enumerate(alist):
+#     print(one)
