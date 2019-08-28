@@ -1292,8 +1292,8 @@ self就是实例本身！！自动传入！！
 
 """
 # 获取随机数
-from random import randint   #为什么只能用这一种调用方式。
-print(randint(0,1))
+# from random import randint   #为什么只能用这一种调用方式。
+# print(randint(0,1))
 
 #获取当前时间,从1970年算起！
 # import time
@@ -1388,9 +1388,45 @@ print(randint(0,1))
 #     room_object = Room(one,animal)
 #     rooms.append(room_object)
 
-
-
 #--------------------------------------枚举 标值对-----------------------------------------------
 # alist = ["a","b","c"]
 # for one in enumerate(alist):
 #     print(one)
+
+
+
+#------------------------------------异常，最后一节课啦------------------------------------
+# 常见的异常类型:
+
+# 目的是希望程序不要退出，继续执行，给客户和程序员一些提示信息
+# 没有定义：NameError: name 'a' is not defined
+# 除数不能为0：ZeroDivisionError: division by zero
+# 找不到文件:NO search file or dtrectory ：路径
+# 超限：IndexError: list index out of range
+
+
+#异常的捕获和处理
+# 捕获意已知异常
+import time
+# import traceback
+#
+# while True:
+#     num = input("inpuy a num:")
+#     try:
+#       print("10000 / {}  = {}".format(num,10000/int(num)))
+#       print(name)
+#     # except ZeroDivisionError as e:        #异常类型
+#     #     print("您输入的值不能为零")  #对异常进行处理，然后继续运行。
+#     #     print(e)                     #输出异常信息,可以打到log日志里面
+#     # except ValueError as e1:               #多个异常类型就多分支，多个except
+#     #     print("输入的值的类型不对")
+#     #     print(e1)
+#     # except Exception as e2:          #父类，捕获所有异常！！简写excepy:
+#     #     print(e2)
+#     except:                            #可以加else。如果没有异常，执行else里面的内容
+#         print(traceback.format_exc())    #打印出错的具体信息
+#     finally:                 #跟无论有没有异常都会执行的代码
+#         print("我一定会被执行")
+
+
+#------------------------------------函数调用栈-----------------------------------------

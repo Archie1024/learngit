@@ -318,7 +318,7 @@ print(rooms)
 start_time = time.time()
 while True:
     curren_time = time.time()
-    if curren_time - start_time > 40:
+    if curren_time - start_time > 60:
         print("时间到了，游戏结束")
         sum_weight = 0
         for one in rooms:
@@ -341,4 +341,5 @@ while True:
     else:
         print("您输入有误，进行下一次游戏")
         continue
-#-------------------------------
+#----------------------------------终极题目，飞机大战-----------------------------------------------------
+
