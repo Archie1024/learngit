@@ -1430,3 +1430,53 @@ import time
 
 
 #------------------------------------函数调用栈-----------------------------------------
+# 函数调用栈，
+"""
+解释器中断代码执行，并抛出一个异常对象
+并在函数调用栈，从上到下，层层寻找捕获该异常的代码，如果能找到就执行对应的代码
+如果不能找到，就一直找到最外层，抛出异常！
+
+处理过了，也应该上报！！要往上抛异常！
+"""
+# def f3():
+#     print("f3开始")
+#     try:
+#         b = 4/0
+#     except:
+#         print("处理F3异常")
+#         raise  #虽然F3处理了，但是还是要上报，在F2也要有异常捕获，否则还是全程抛错！
+#     print("f3结束")
+#
+# def f2():
+#     print("f2开始")
+#     f3()
+#     print("f2结束")
+#
+# def f1():
+#     print("f1开始")
+#     f2()
+#     print("f1结束")
+# try:
+#     f1()
+# except:
+#     print("在调用处处理了一个异常。
+
+"""自定义异常集成exception"""
+# class NameToolongError(Exception):
+#     pass
+# class NameTooshortError(Exception):   #集成类
+#     pass
+#
+#
+# def input_name():
+#     name = input("请输入用户名：")
+#     if len(name) > 10:
+#         raise NameToolongError  #raise 把异常抛给调用方处理！
+#     elif len(name) < 5:
+#         raise NameTooshortError
+# try:
+#     input_name()
+# except NameToolongError:
+#     print("名字太长")
+# except NameTooshortError:
+#     print("名字太短")
