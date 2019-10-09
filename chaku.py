@@ -84,6 +84,7 @@ for row in curDanube.fetchall():
         curTemporary.execute(sql)
         for row in curTemporary.fetchall():
             print(" ".join([str(x) for x in row]))
+
 curTemporary.close()
 curMaterial.close()
 curDanube.close()

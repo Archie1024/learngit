@@ -37,14 +37,13 @@
 #         print("{}{}{}{}{}".format(n,"*",m,"=",n*m))
 #
 #     print("")         #这是个错误的，下面写一个正确的。
-
+#
 # for m in range(1, 10):
 #     for n in range(1, m + 1):
 #         print("%d*%d=%d\t" % (n, m, n * m), end="")
 #
 #     print("")
-
-
+#
 
 #-----------------------------以固定格式输出学生和学生年龄---------------------------
 # fadf,4;adfasdf,24;fsfadsf,432;
@@ -217,7 +216,7 @@ f20180111153550/i_9wWzVenl.gif	769872	FvslKY9JUaCQm-lu02E34tvAP_oG	1515656167462
 #
 # print(sort_list([123,13,4,6,31231231,5345]))
 
-# #--------------------------------不用下标，直接remove，方便理解-------------------------------
+# #--------------------------------不用下标，直接remove，方便理解----------------------3---------
 # def sort_list(inlist):
 #     newlist = []
 #     while len(inlist) > 0:
@@ -261,85 +260,85 @@ f20180111153550/i_9wWzVenl.gif	769872	FvslKY9JUaCQm-lu02E34tvAP_oG	1515656167462
 #             ourstr = "这一行没有分号，无法正常写入。"
 #         wfile.write(ourstr + "\n")#为什么在这里呢，因为这里已经是和第一个if并列的了，是if的最外层
 #####################################房间老虎喂食游戏##########################################333
-class Tiger:#老虎类
-    class_name = "老虎"
-    def __init__(self,Weight = 200):
-        self.Weight = Weight
-
-    def roar(self):  #叫声
-        print("wow!")
-        self.Weight -= 5  #哪个实例叫，哪个实例减5斤
-
-    def feed(self,food):
-        if food == "肉":
-            self.Weight += 10
-            print("喂食老虎成功，体重+10斤")
-        else:
-            self.Weight -= 10
-            print("喂食老虎错误，体重-10斤")
-
-class Sheep:#羊类
-    class_name = "羊"
-    def __init__(self,Weight = 100):
-        self.Weight = Weight
-
-    def roar(self):  #叫声
-        print("mei~~")
-        self.Weight -= 5  #哪个实例叫，哪个实例减5斤
-
-    def feed(self,food):
-        if food == "草":
-            self.Weight += 10
-            print("喂食羊成功，体重+10斤")
-        else:
-            self.Weight -= 10
-            print("喂食羊错误，体重-10斤")
-
-class Room:#房间类
-    class_name = "room"
-    def __init__(self,num,animal):  #用初始化方法进行对象的组合
-        self.num = num
-        self.animal = animal
-
-#对以上的东西进行关系组网
-from random import randint
-import time
-rooms = []  #列表里面的元素是房间实例。
-for one in range(0,10):
-    if randint(0,1):  #1是 true，o是Fulse
-        ani = Tiger()
-    else:
-        ani = Sheep()
-    room_object = Room(one,ani)
-    rooms.append(room_object)
-print(rooms)
-
-
-start_time = time.time()
-while True:
-    curren_time = time.time()
-    if curren_time - start_time > 60:
-        print("时间到了，游戏结束")
-        sum_weight = 0
-        for one in rooms:
-            sum_weight += one.animal.Weight
-            print("第{}个房间，动物是{}，体重是{}斤".format(one.num+1,one.animal.class_name,one.animal.Weight))
-            print("总成绩是：{}".format(sum_weight))
-        break
-    room_num = randint(1,10) #显示随机房间号
-    room = rooms[room_num - 1]
-    is_select = input("该房间号为{},是否需要敲门：y/n?".format(room_num))
-    if is_select.strip() == "y" or is_select.strip() == "n":
-        if is_select.strip() == "y":
-            room.animal.roar()
-        feed_food = input("请给该房间的动物喂食，肉/草")
-        if feed_food.strip() == "肉" or feed_food.strip() == "草":
-            room.animal.feed(feed_food.strip())     #
-        else:
-            print("喂食食物错误！")
-            continue
-    else:
-        print("您输入有误，进行下一次游戏")
-        continue
+# class Tiger:#老虎类
+#     class_name = "老虎"
+#     def __init__(self,Weight = 200):
+#         self.Weight = Weight
+#
+#     def roar(self):  #叫声
+#         print("wow!")
+#         self.Weight -= 5  #哪个实例叫，哪个实例减5斤
+#
+#     def feed(self,food):
+#         if food == "肉":
+#             self.Weight += 10
+#             print("喂食老虎成功，体重+10斤")
+#         else:
+#             self.Weight -= 10
+#             print("喂食老虎错误，体重-10斤")
+#
+# class Sheep:#羊类
+#     class_name = "羊"
+#     def __init__(self,Weight = 100):
+#         self.Weight = Weight
+#
+#     def roar(self):  #叫声
+#         print("mei~~")
+#         self.Weight -= 5  #哪个实例叫，哪个实例减5斤
+#
+#     def feed(self,food):
+#         if food == "草":
+#             self.Weight += 10
+#             print("喂食羊成功，体重+10斤")
+#         else:
+#             self.Weight -= 10
+#             print("喂食羊错误，体重-10斤")
+#
+# class Room:#房间类
+#     class_name = "room"
+#     def __init__(self,num,animal):  #用初始化方法进行对象的组合
+#         self.num = num
+#         self.animal = animal
+#
+# #对以上的东西进行关系组网
+# from random import randint
+# import time
+# rooms = []  #列表里面的元素是房间实例。
+# for one in range(0,10):
+#     if randint(0,1):  #1是 true，o是Fulse
+#         ani = Tiger()
+#     else:
+#         ani = Sheep()
+#     room_object = Room(one,ani)
+#     rooms.append(room_object)
+# print(rooms)
+#
+#
+# start_time = time.time()
+# while True:
+#     curren_time = time.time()
+#     if curren_time - start_time > 60:
+#         print("时间到了，游戏结束")
+#         sum_weight = 0
+#         for one in rooms:
+#             sum_weight += one.animal.Weight
+#             print("第{}个房间，动物是{}，体重是{}斤".format(one.num+1,one.animal.class_name,one.animal.Weight))
+#             print("总成绩是：{}".format(sum_weight))
+#         break
+#     room_num = randint(1,10) #显示随机房间号
+#     room = rooms[room_num - 1]
+#     is_select = input("该房间号为{},是否需要敲门：y/n?".format(room_num))
+#     if is_select.strip() == "y" or is_select.strip() == "n":
+#         if is_select.strip() == "y":
+#             room.animal.roar()
+#         feed_food = input("请给该房间的动物喂食，肉/草")
+#         if feed_food.strip() == "肉" or feed_food.strip() == "草":
+#             room.animal.feed(feed_food.strip())     #
+#         else:
+#             print("喂食食物错误！")
+#             continue
+#     else:
+#         print("您输入有误，进行下一次游戏")
+#         continue
 #----------------------------------终极题目，飞机大战-----------------------------------------------------
 

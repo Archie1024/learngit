@@ -30,7 +30,7 @@
 
 #根据日志信息获得纯净的用户名字
 """
-A old lady come in, the name is Mary,level 312
+A old lady come in, the name is Mary,level 3123
 A pretty boy come in,the name is Archie,level 32232432
 """
 # def get_name(srcstr):
@@ -39,3 +39,4 @@ A pretty boy come in,the name is Archie,level 32232432
 #     return name
 # inStr = input("输入信息：")
 # print(get_name(inStr))
+
