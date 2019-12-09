@@ -88,23 +88,23 @@
 
 
 # 文件的读写
-file_dir = r"C:\Users\archie\Desktop\简历&笔记\红楼梦\葬花吟.txt"      # 一定要指定后缀名
-fire_object = open(file_dir,"rb")        #rb二进制打开
-fire_object.seek(3,1)       #1模式是相对位置移动指针，从当前位置向后移动3个单位，2模式最后位置移动指针
-print(fire_object.read(6))     #参数是鸡就从指针开始读几个字
-print(fire_object.readline())       #读一整行！也是有光标的，读到哪里光标在哪里。读出的是字符串
-print(fire_object.readlines())      #读所有行，结果是一个列表list，会有换行符
-print(fire_object.read().splitlines())#返回的是去过换行符号的列表
-
-
-
-'''如果文件不存在会新建！当用写模式打开文件，原有文件会消失！！！在保存之前还好，只是在内存里面！写入磁盘里面就完蛋了！'''
-file_dir = r"D:\Python\new 1.txt"      # 一定要指定后缀名
-fire_object = open(file_dir,"w")
-fire_object.write("12345")       # 写模式一定要写字符串进去，写在了内存，没有写在磁盘
-fire_object.write("12345" + "\n")  #写入一行以后自动换行
-fire_object.close()     #关闭的时候回直接保存
-fire_object.flush()     #写入刷新，可以保存，这种方式写入没有换行
+# file_dir = r"C:\Users\archie\Desktop\简历&笔记\红楼梦\葬花吟.txt"      # 一定要指定后缀名
+# fire_object = open(file_dir,"rb")        #rb二进制打开
+# fire_object.seek(3,1)       #1模式是相对位置移动指针，从当前位置向后移动3个单位，2模式最后位置移动指针
+# print(fire_object.read(6))     #参数是鸡就从指针开始读几个字
+# print(fire_object.readline())       #读一整行！也是有光标的，读到哪里光标在哪里。读出的是字符串
+# print(fire_object.readlines())      #读所有行，结果是一个列表list，会有换行符
+# print(fire_object.read().splitlines())#返回的是去过换行符号的列表
+#
+#
+#
+# '''如果文件不存在会新建！当用写模式打开文件，原有文件会消失！！！在保存之前还好，只是在内存里面！写入磁盘里面就完蛋了！'''
+# file_dir = r"D:\Python\new 1.txt"      # 一定要指定后缀名
+# fire_object = open(file_dir,"w")
+# fire_object.write("12345")       # 写模式一定要写字符串进去，写在了内存，没有写在磁盘
+# fire_object.write("12345" + "\n")  #写入一行以后自动换行
+# fire_object.close()     #关闭的时候回直接保存
+# fire_object.flush()     #写入刷新，可以保存，这种方式写入没有换行
 
 
 # ---------------------追加模式，不做任何清空操作，接着写-------------------------------------
@@ -339,3 +339,121 @@ fire_object.flush()     #写入刷新，可以保存，这种方式写入没有�
 
 # 直接选中函数，鼠标左键，find usages,能够找到函数在哪里被调用，能直接展示哪一行调用
 # 批量重构函数,找到任何一个变量或函数的名字，右键refactor—rename，然后在控制台点“do”
+
+
+# def main():
+# #     for a in range(1, 10):
+# #         for b in range(10):
+# #             for c in range(10):
+# #                 s1 = a * 100 + b * 10 + c
+# #                 s2 = pow(a, 3) + pow(b, 3) + pow(c, 3)
+# #                 if s1 == s2:
+# #                     print(s1)
+# #
+# # if __name__ == '__main__':
+# #     main()
+
+
+# !/usr/bin/python3
+
+# import smtplib
+# from email.mime.text import MIMEText
+# from email.header import Header
+#
+# # 第三方 SMTP 服务
+# mail_host = "smtp.163.com"  # 设置服务器
+# mail_user = "13721330307@163.com"  # 用户名
+# mail_pass = "lsq123"  # 口令
+#
+# sender = 'from@runoob.com'
+# receivers = ['1771847093@qq.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
+#
+# message = MIMEText('Python 邮件发送测试...', 'plain', 'utf-8')
+# message['From'] = Header("菜鸟教程", 'utf-8')
+# message['To'] = Header("测试", 'utf-8')
+#
+# subject = 'Python SMTP 邮件测试'
+# message['Subject'] = Header(subject, 'utf-8')
+#
+# try:
+#     smtpObj = smtplib.SMTP()
+#     smtpObj.connect(mail_host, 25)  # 25 为 SMTP 端口号
+#     smtpObj.login(mail_user, mail_pass)
+#     smtpObj.sendmail(sender, receivers, message.as_string())
+#     print("邮件发送成功")
+# except smtplib.SMTPException:
+#     print("Error: 无法发送邮件")
+
+
+
+# import smtplib
+# from email.mime.text import MIMEText
+#
+# email_host = 'smtp.163.com'     #邮箱地址
+# email_user = '13721330307@163.com'  # 发送者账号
+# email_pwd = 'lsq123'  # 发送者的密码
+# maillist = '1771847093@qq.com'
+# #收件人邮箱，多个账号的话，用逗号隔开
+# me = email_user
+# msg = MIMEText('这是个python测试邮件，不用回复。')    # 邮件内容
+# msg['Subject'] = 'python测试'    # 邮件主题
+# msg['From'] = me    # 发送者账号
+# msg['To'] = maillist    # 接收者账号列表
+# smtp = smtplib.SMTP(email_host,port=25) # 连接邮箱，传入邮箱地址，和端口号，smtp的端口号是25
+# smtp.login(email_user, email_pwd)   # 发送者的邮箱账号，密码
+# smtp.sendmail(me, maillist, msg.as_string())
+# # 参数分别是发送者，接收者，第三个是把上面的发送邮件的内容变成字符串
+# smtp.quit() # 发送完毕后退出smtp
+# print ('email send success.')
+
+# import smtplib
+# from email.mime.text import MIMEText
+#
+#
+# def send_mail(username, passwd, recv, title, content, mail_host='smtp.163.com', port=25):
+#     '''
+#     发送邮件函数，默认使用163smtp
+#     :param username: 邮箱账号 xx@163.com
+#     :param passwd: 邮箱密码
+#     :param recv: 邮箱接收人地址，多个账号以逗号隔开
+#     :param title: 邮件标题
+#     :param content: 邮件内容
+#     :param mail_host: 邮箱服务器
+#     :param port: 端口号
+#     :return:
+#     '''
+#     msg = MIMEText(content)  # 邮件内容
+#     msg['Subject'] = title  # 邮件主题
+#     msg['From'] = username  # 发送者账号
+#     msg['To'] = recv  # 接收者账号列表
+#     smtp = smtplib.SMTP(mail_host, port=port)  # 连接邮箱，传入邮箱地址，和端口号，smtp的端口号是25
+#     smtp.login(username, passwd)  # 发送者的邮箱账号，密码
+#     smtp.sendmail(username, recv, msg.as_string())
+#     # 参数分别是发送者，接收者，第三个是把上面的发送邮件的内容变成字符串
+#     smtp.quit()  # 发送完毕后退出smtp
+#     print('email send success.')
+#
+# email_user = '13721330307@163.com'  # 发送者账号
+# email_pwd = 'lsq123'  # 发送者密码
+# maillist = '1771847093@qq.com'
+# title = '测试邮件标题'
+# content = '这里是邮件内容'
+# send_mail(email_user, email_pwd, maillist, title, content)
+
+# import smtplib
+# from email.mime.text import MIMEText
+#
+# mailserver = "smtp.163.com"  #邮箱服务器地址
+# username_send = '13721330307@163.com'  #邮箱用户名
+# password = 'lsq123'   #邮箱密码：需要使用授权码
+# username_recv = '1771847093@qq.com'  #收件人，多个收件人用逗号隔开
+# mail = MIMEText('这是发用的邮件内容')
+# mail['Subject'] = '这是邮件主题'
+# mail['From'] = username_send  #发件人
+# mail['To'] = username_recv  #收件人；[]里的三个是固定写法，别问为什么，我只是代码的搬运工
+# smtp = smtplib.SMTP(mailserver,port=25) # 连接邮箱服务器，smtp的端口号是25
+# # smtp=smtplib.SMTP_SSL('smtp.qq.com',port=465) #QQ邮箱的服务器和端口号
+# smtp.login("13721330307@163.com","lsq123...")  #登录邮箱
+# smtp.sendmail(username_send,username_recv,mail.as_string())# 参数分别是发送者，接收者，第三个是把上面的发送邮件的内容变成字符串
+# smtp.quit() # 发送完毕后退出smtp
+# print ('success')
