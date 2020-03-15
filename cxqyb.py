@@ -31,7 +31,7 @@
 # 1
 # "我是一个字符串"
 
-#连接符的使用，只能连接字符串或者加减述职，不能字符串和数字加减
+#连接符的使用，只能连接字符串或者加减数值，不能字符串和数字加减
 # print(3+2)
 # print("我是字符串" + "我也是字符串")
 # print("123"+123)      #(not "int") to str
@@ -98,11 +98,12 @@
 # info = "my name is tom!2019-3-23"
 # print(info[3:3+4])  #左含右不含，左边数到下标的会被取到，而右边数到会少取一个，因此要多一位。
 # print(info[:-9])  #取头写尾，右不含，写到会被切掉取不到
-# print(info[-9:])  #取尾写头
+# print(info[-9:])  #取尾写头，写到的不会被切到
 # print(info[-10-3:-10])  #负下标切片
 # v = "asdfg"
 # print(v[::-1])  #翻转字符串
 
+##############################列表list##################################
 # list的定义和序列下标使用
 # list是一种序列类型，有下标，可以存储任意数据类型，由一个个元素组成。
 # list1 = [1,100,3.14,[12,15]]
@@ -287,7 +288,7 @@
 # func()          #只有函数调用的时候才执行函数里面的代码
 
 #------------------------函数的参数，形参和实参---------------------------
-# 形参。在函数定义的时候的参数
+# 形参,在函数定义的时候的参数
 #实参，在函数调用的时候传入的参数。
 # def fun(a,b):   #必填形参，只有参数名的时候，是必填形参
 #     print(a,b)
@@ -366,7 +367,7 @@
 # blist = [32435543,2345,"32435676543276544"]
 # alist.append("我把直接添加的最后")
 # alist.insert(2,"我把自己添加的第三个")
-# del alist[-2]    #以下标把2356删除                     #这个多看下格式
+# del alist[-2]    #以下标把2356删除
 # print(alist)
 #
 # alist = alist + blist  #把B列表和C列表合并,等于 alist.extend(blist)
@@ -412,14 +413,14 @@
 
 # 转换符号---------------------------------------------------------
 # file_dir = "C:/lsq/123"
-# file_dir2 = "C:\test"   #路径中的t会被转译。t被转换成了换行符号
+# file_dir1 = "C:\test"   #路径中的t会被转译。t被转换成了换行符号
 # file_dir2 = r"C:\test"  #前面加r取消转译
 # file_dir3 = "C:\\test"  #所以用转译符写路径的时候，一定要写两个。、，取消转译
-# print(file_dir3)
+# print(file_dir1,file_dir2,file_dir3)
 
 #循环语句和注释
 # def get_sum(start,end,step):
-#     """这就是那个让你没有面试机会的傻逼代码"""
+#     """这就是那个让你没有面试机会的傻逼代码，函数法"""
 #     zhonghe = 0
 #     while start <= end:
 #         zhonghe += start
@@ -427,13 +428,16 @@
 #     return zhonghe
 # print(get_sum(0,100,1))
 #
-# sum_shabi = 0
-# a = 1
-# b = 100
-# while a <= b:
-#     sum_shabi += a
-#     a += 1
-# print(sum_shabi)
+# #--------------------------------------------------
+# print(sum(range(0,101,1)))    #一行代码解决
+#
+# #--------------------------------------------------
+# list_sum = []               #加列表法
+# for one in range(101):
+#     list_sum.append(one)
+# print(sum(list_sum))
+#-------------------------------------------
+# print(sum([one for one in range(101)]))   #一行代码
 
 #打印1-100之间的所有数字
 # a = 1
@@ -476,11 +480,16 @@
 # for one in range(0,101,1):  #左含右不含
 #     print(one)
 
+# print([one for one in range(100)])  #列表生成式
+
+
 # 创建一个指定步进的列表
 # list_step5 = []
 # for one  in  range(0,101,5):
 #     list_step5.append(one)
 # print(list_step5)
+#
+# print([one for one in range(0,101,5)])  # 列表生成式
 
 # 把上面的以固定步进创建列表写成函数
 # def create_list(start,end,step):
@@ -514,7 +523,6 @@
 # 第一步        句前注释
 # 句号注释演示（我是句前注释）
 # print("hello world!")    #打印字符串  （）
-
 #############################文件的读写#########################################
 '''文件的打开怕open,有返回值，可以赋值给变量'''
 # file_object = open(file_name,access_"r")
@@ -584,13 +592,13 @@
 # print(fire_object.read().splitlines())#返回的是去过换行符号的列表
 
 ################################写模式，如果文件不存在会新建############################
-'''如果文件不存在会新建！当用写模式打开文件，原有文件会消失！！！在保存之前还好，只是在内存里面！写入磁盘里面就完蛋了！'''
-file_dir = r"D:\Python\new 1.txt"      # 一定要指定后缀名
-fire_object = open(file_dir,"w")
-fire_object.write("12345")       # 写模式一定要写字符串进去，写在了内存，没有写在磁盘
-fire_object.write("12345" + "\n")  #写入一行以后自动换行
-fire_object.close()     #关闭的时候回直接保存
-fire_object.flush()     #写入刷新，可以保存，这种方式写入没有换行
+# '''如果文件不存在会新建！当用写模式打开文件，原有文件会消失！！！在保存之前还好，只是在内存里面！写入磁盘里面就完蛋了！'''
+# file_dir = r"D:\Python\new 1.txt"      # 一定要指定后缀名
+# fire_object = open(file_dir,"w")
+# fire_object.write("12345")       # 写模式一定要写字符串进去，写在了内存，没有写在磁盘
+# fire_object.write("12345" + "\n")  #写入一行以后自动换行
+# fire_object.close()     #关闭的时候回直接保存
+# fire_object.flush()     #写入刷新，可以保存，这种方式写入没有换行
 
 
 # ---------------------追加模式，不做任何清空操作，接着写-------------------------------------
@@ -623,8 +631,6 @@ fire_object.flush()     #写入刷新，可以保存，这种方式写入没有�
 # f_open = open(r"D:\Python\存放一些简单文件\linshi.txt")
 # f2_open = open(r"D:\Python\存放一些简单文件\new 1.txt")
 # print(f_open.read() + f2_open.read())
-
-
 #####################################循环嵌套以及算法######################################3
 """男女相亲，要求，每个男生和每个女生都要有机会接触"""###编辑首选for询函！！！！！
 # boys = ["mike","jack","tom"]
@@ -638,7 +644,6 @@ fire_object.flush()     #写入刷新，可以保存，这种方式写入没有�
 #     for s in range(1,h+1):
 #         print("{}*{}={}".format(h,s,h*s),end = " ")
 #     print()
-#
 ####################################列表生成式####################################################3
 # beforetax = [1000,10000,353643,32456,5000]
 # aftertax = []
@@ -658,7 +663,6 @@ fire_object.flush()     #写入刷新，可以保存，这种方式写入没有�
 # print(alist)
 # alist.reverse()     #正序排外反转
 # print(alist)
-# # #或者
 # alist.sort(reverse=True)    #sort的变量
 # print(alist)
 
@@ -674,10 +678,11 @@ fire_object.flush()     #写入刷新，可以保存，这种方式写入没有�
 
 # alist = [43,543,5432,54323,42,45,65,6]
 # for i in range(0,len(alist)-1):   #因为j是比较坐标，第一个是不用和第一个比的，所以-1.
-#     for j in range(0,len(alist)-1-i):  #因为最后一个是不用和最后一个比的，所以-1,
+#     for j in range(0,len(alist)-i-1):  #因为最后一个是不用和最后一个比的，所以-1,
 #         if  alist[j] > alist[j + 1]:
 #             alist[j],alist[j+1] = alist[j+1],alist[j]
 # print(alist)
+
 #i是末尾不用排的，i是末尾不用排序的，而j是在里面循环，一个个比，如果大，就滚去后面。
 
 """使用append排序，找出最小的append添加的list里面"""
@@ -706,13 +711,12 @@ fire_object.flush()     #写入刷新，可以保存，这种方式写入没有�
 #
 # print(len(dict1)) #键和值算一个元素，所有的类型都是没有逗号的时候算一个元素。key value
 # #字典不能通过下标访问，因为不是序列类型，只能通过key访问，
-# 字典不能通过下标访问，因为不是序列类型，只能通过key访问。
 # print(dict1["name"])      #字典的查询操作
 # dict1["体重"] = "100公斤"       #字典如何新增元素，字典名[key] = value
 # print(dict1)     #新增后
 # dict1["体重"] = "200公斤"       #当key存在时，就会对元素进行修改。因为key永远是唯一的。
 # print(dict1)    #修改后
-# # #字典里面没有顺序的概念，直接是放到尾部的，是通过key找的所以顺序无所谓
+#字典里面没有顺序的概念，直接是放到尾部的，是通过key找的所以顺序无所谓
 #
 # del dict1["name"]       #通过键去删除元素。
 # print(dict1)
@@ -750,7 +754,7 @@ fire_object.flush()     #写入刷新，可以保存，这种方式写入没有�
 # }
 # print(students["jack"]["age"])  #可以通过键去取值
 # #判断key是否在字典
-# print("mike" in students)   #判断是否在字典中！返回是布尔型！
+# print("mike" in students)   #判断是否在字典中！返回是布尔型！判断是否在字典中！返回是布尔型！
 
 # --------------------------------------字典的遍历---------------------------------------
 # students = {
@@ -808,12 +812,12 @@ print(new_list[1])
 # print(a)
 #
 #
-# #的到所有value返回类list中
+#的到所有value返回类list中
 # dict4 = {1:2,3:4}
 # b = dict4.values()
 # print(b)
 # print(type(b))
-# #
+
 #
 # 得到所有key,values返回到类list中.key,values成为一个元组，作为类列表的一个元素！！
 # dict4 = {1:2,3:4}
@@ -875,7 +879,7 @@ print(new_list[1])
 #
 # print(1,2,3,4)  #逗号隔开的默认单独元素，用空格分开显示
 # print(1,2,3,4,sep="#######")    #改掉默认参数，就可以改掉空格。
-# open()#de 缺省参数是“r”
+# # open()#de 缺省参数是“r”
 
 
 # ------------------------------可变数量参数----------------------------------------------------
@@ -883,7 +887,7 @@ print(new_list[1])
 # 比如print，可以输入无数个参数。*变量名  叫可变数量参数，可变熟练参数不接受“变量=值”的写法。
 # def func(a,b = 1,*args):    #打印后args是一个元组
 #     print(a,b,args)
-#
+
 # func(10,3,32,435,5345,453)  #args是一个无底洞，多少个实参都填不满它,3会先给B，然后剩余的值会给args
 # """以上方法及其不推荐，因为,因为我也不知道为啥不推荐，反正不推荐"""
 
@@ -913,7 +917,7 @@ print(new_list[1])
 #     print(a,b,args,kwargs)
 #
 # func(1,3245,3435,312321,b = 100,age = "tom",name = 19)  #传入也以字典进行传入，key必须是字符串，
-# func(1,23,4,3,**d)  #两个*号可以传入字典，key必须是字符串，如果不是字符串会报错，因为int不能等于另一个不相等的int
+# func(444,23,4,3,**d)  #两个*号可以传入字典，key必须是字符串，如果不是字符串会报错，因为int不能等于另一个不相等的int
 # 所以定义字典的时候尽量用字符串，否则展开的时候回出错的。而且用int当key和下标差不多，也看不懂！字典的键也尽量不要和变量重名
 # 如果想在函数里面展开字典,字典的key必须是字符串。
 
@@ -944,17 +948,12 @@ print(new_list[1])
 """
 
 # 同包的模块调用.(同一个包里面可以省略包名)
-# import AAAA.sumfun      #同一个包内模块的引用：import  + 模块名
-# AAAA.sumfun.get_sum2(1,100)     #同一个包下的调用：模块名.函数
-
-# 不同包的模块调用方法1
-# from BBBB import sum2 as st  #不同包模块的引用：from 包名 import 函数名 as 别名
-# st.get_sum(1,100,step=10)     #不同包下的调用：路径别名.函数名
+# import sumfun      #同一个包内模块的引用：import  + 模块名
+# sumfun.get_sum2(1,100)     #同一个包下的调用：模块名.函数
 
 # 不同包的模块调用方法2  (最简单，最好用，也最通用。)
 # import pack1.sum2 as sm
 # sm.get_sum(1,100)
-
 """""""""""""""""""""""""也可以只导入一个函数,这种写法有个弊端，一般只能一次导入一个"""""""""""""""""""""""""""""""""""""
 # from AAAA.sumfun import get_sum2
 # get_sum2(1,2)   #这时候就是仅导入一个函数了，仅导入一个函数，可以直接调用
@@ -976,11 +975,11 @@ print(new_list[1])
 1、import phone.mobile.analog             导入包—子包—模块
 phone.mobile.analog.dial()          
 
-2、from phone.mobile import analog  as hh        直接从其他包里面导入某个模块
-hh.dial()                
+2、import phone.mobile.analog  as hh        直接从其他包里面导入某个模块
+hh.dial()              
 
 3、from phone.mobile.analog import dial,dia2
-dial()        仅导入某个函数，可以直接调用,加逗号，可以导入多个模块
+dial()        仅导入某个函数，可以直接调用,加逗号，可以导入多个模块。
 
 """
 
@@ -996,7 +995,6 @@ dial()        仅导入某个函数，可以直接调用,加逗号，可以导�
 # from pack1.sumfun import  get_sum2    #demo3里面的if __name__ == "__main__":下的测试代码就不糊运行了！
 # get_sum2(start = 0,end = 100)
 ###################################模块与包的使用###########################3
-
 """使用标准库"""
 # 标准库，python自带的功能模块和包！！
 # 内置函数类型，比如len,int,open,直接使用，无需import
@@ -1139,9 +1137,13 @@ dial()        仅导入某个函数，可以直接调用,加逗号，可以导�
 驼峰法比较好，变量用下划线吧！
 没有继承关系，可以不写括号！
 1、特征就是属性，行为就是方法！
-2、静态属性，类属性，公有属性
-3、动态属性，实例属性，私有属性,在类里面用函数的方式定义，每次都使用初始化方法，然后由实例定义的时候赋予值
-self就是实例本身！！自动传入！！
+2、类里面的字节定义的变量叫静态属性，类属性，共有属性。
+3、动态属性，实例属性，私有属性,在类里面用函数的方式定义，每次都使用初始化方法，然后由实例定义的时候赋予值。
+self就是实例本身！！自动传入！
+对象的方法就是对象的行为，动态方法：每个具体实例的方法，又叫实例方法,调用方式    实例.方法，实例方法只能用实例访问，不能用类访问。
+
+# 静态方法：类共有的方法，与具体实例无关，（类方法），类可以直接调用，不需要实例。
+# 定义的时候用@staticmethod修饰，只能修饰一个。调用方式  类.方法   或   实例.方法，可以通过类访问。
 """
 # class Sheep:#羊累
 #     class_name = "羊"
@@ -1150,11 +1152,11 @@ self就是实例本身！！自动传入！！
 #     def roar(self):
 #         print("mei~")
 #         self.Weight -= 5
-#
+# #
 # class Tiger:#老虎类
 #     class_name = "老虎"#类里面的变量叫静态属性，静态属性：类属性，共有属性
 #     def __init__(self,inWeight = 200):#初始化方法，函数，在类里面叫方法，特有方法，后面跟实例属性，当创建实例的时候会被执行
-#         self.Weight = inWeight#再赋值，重新再赋值。实例属性是针对实例的
+#         self.Weight = inWeight#再赋值，重新再赋值。实例属性是针对实例的,有点像函数的缺省值
 #     def roar(self):
 #         print("wow!")
 #         self.Weight -= 5
@@ -1162,23 +1164,25 @@ self就是实例本身！！自动传入！！
 # class Room:#房间类
 #     def __init__(self,num,animal):
 #         self.num = num
-#         self.animal = an
+#         self.animal = animal
 
-#
+
 # T1 = Tiger(400)#创建T1的老虎实例！
-# print(T1.weight)#每个个体的实例属性都不一样，属于每个单独的实例
+# print(T1.Weight)#每个个体的实例属性都不一样，属于每个单独的实例
 # T2 = Tiger(inWeight=500)
-# print(T2.weight)
+# print(T2.Weight)
+# T3 = Tiger()
+# print(T3.Weight)
 # print(T1.class_name)#老虎类的公有属性，静态属性，可以用实例去调用
 # print(Tiger.class_name)#也可以用类去调用公有属性，类属性，静态属性
 
 
 # class Tiger:#老虎类
-#     class_name = "老虎"
-#     def __init__(self,Weight = 200):
-#         self.Weight = Weight
+#     class_name = "老虎"           #类属性
+#     def __init__(self,Weight = 200):         #初始化实例属性
+#         self.Weight = Weight                 #初始化实例属性
 #
-#     def roar(self):  #叫声
+#     def roar(self):                          #方法 叫声
 #         print("wow!")
 #         self.Weight -= 5  #哪个实例叫，哪个实例减5斤
 #
@@ -1192,6 +1196,7 @@ self就是实例本身！！自动传入！！
 #
 # class Sheep:#羊类
 #     class_name = "羊"
+#     color = "白花花的"
 #     def __init__(self,Weight = 100):
 #         self.Weight = Weight
 #
@@ -1206,14 +1211,14 @@ self就是实例本身！！自动传入！！
 #         else:
 #             self.Weight -= 10
 #             print("喂食羊错误，体重-10斤")
-#
+
 # class Room:#房间类
 #     class_name = "room"
-#     def __init__(self,num,animal):  #用初始化方法进行对象的组合
+#     def __init__(self,num,animal):  #用初始化方法进行对象的组合，当使用类创建实例的时候，会自动调用这个方法。
 #         self.num = num
 #         self.animal = animal
 #
-# #对以上的东西进行关系组网
+# #对以上的东西进行关系组网，这也是一个很有趣的算法，增加一个房间列表
 # from random import randint
 # import time
 # rooms = []  #列表里面的元素是房间实例。
@@ -1227,7 +1232,7 @@ self就是实例本身！！自动传入！！
 # print(rooms)
 #
 #
-# start_time = time.time()
+# start_time = time.time()        #这个小算法也可以关注下，每次while里面，运用一个新时间。
 # while True:
 #     curren_time = time.time()
 #     if curren_time - start_time > 60:
@@ -1242,19 +1247,285 @@ self就是实例本身！！自动传入！！
 #     room = rooms[room_num - 1]
 #     is_select = input("该房间号为{},是否需要敲门：y/n?".format(room_num))
 #     if is_select.strip() == "y" or is_select.strip() == "n":
-#         if is_select.strip() == "y":
+#         if is_select.strip() == "y":        #先判断一个大范围，再判断一个小范围
 #             room.animal.roar()
 #         feed_food = input("请给该房间的动物喂食，肉/草")
+#         # room.animal.feed(feed_food.strip())    # 此行代码假定，有草和肉之外的其他食物，
 #         if feed_food.strip() == "肉" or feed_food.strip() == "草":
-#             room.animal.feed(feed_food.strip())     #
+#             room.animal.feed(feed_food.strip())     #喂样肉和草之外的食物，完全不吃，不进入类
 #         else:
-#             print("喂食食物错误！")
+#             print("我们不提供这种食物，只有肉和草！！")
 #             continue
 #     else:
 #         print("您输入有误，进行下一次游戏")
 #         continue
 
-list1 = [2, 7, 5, 4]
-list1.pop(2)
+###############------------------------对象的继承----------------------------------------------------------
+"""比如用华南虎去继承上面的老虎类"""
+# class STigre(Tiger):
+#     age = 20  #继承父类也可以定义自己的类和方法。
+#
+# huananhu1 = STigre()   #创建华南虎实例
+# print(huananhu1.Weight,huananhu1.age)      #华南虎有老虎的属性，也有自己属性
+# huananhu1.roar()                           #继承父类的方法
+# print(huananhu1.Weight)
+
+# class SSSTTT(Tiger,Sheep):      #新品种，老虎羊
+#     pass
+# ST1 = SSSTTT()       #一只普通的老虎羊
+# print(ST1.class_name,ST1.color)     #优先继承第一个类的属性,若第一个没有，才会去继承第二个父类的属性
 
 
+# class STiger(Tiger):
+#     def __init__(self,inWeight=200):    #之类初始化，要去调用父类的初始化方法。
+#         Tiger.__init__(self,inWeight)
+#     def roar(self):
+#         print("我是子类的方法")
+# ST = STiger()
+# print(ST.Weight)
+# ST.roar()  #调用之类重写的方法
+# super(STiger,ST).roar()  #在重写中调用父类的方法！格式super(子类类名,子类的实例名).方法，super相对于父类。这个很重要，多看看
+
+
+#############################枚举和标值对#############################################33
+# alist = ["a","b","c"]
+# """希望有时间可以探讨一下标值对的应用"""
+# for one in enumerate(alist):
+#     print(one)
+
+################################什么是异常#############################################
+
+"""常见的异常类型"""
+# 目的是希望程序不要退出，继续执行，给客户和程序员一些提示信息
+# 没有定义：NameError: name 'a' is not defined
+# 除数不能为0：ZeroDivisionError: division by zero
+# 找不到文件:NO search file or dtrectory ：路径
+# 超限：IndexError: list index out of range
+
+#异常的捕获和处理，捕获已知异常
+import time
+# import traceback
+#
+# while True:
+#     num = input("inpuy a num:")
+#     try:
+#       print("10000 / {}  = {}".format(num,10000/int(num)))
+#       print(name)
+#     # except ZeroDivisionError as e:        #异常类型
+#     #     print("您输入的值不能为零")  #对异常进行处理，然后继续运行。
+#     #     print(e)                     #输出异常信息,可以打到log日志里面
+#     # except ValueError as e1:               #多个异常类型就多分支，多个except
+#     #     print("输入的值的类型不对")
+#     #     print(e1)
+#     # except Exception as e2:          #父类，捕获所有异常！！简写excepy:
+#     #     print(e2)
+#     except:                            #可以加else。如果没有异常，执行else里面的内容
+#         print(traceback.format_exc())    #打印出错的具体信息，捕获未知异常
+#     finally:                 #跟无论有没有异常都会执行的代码
+#         print("我一定会被执行")
+
+##########################################调用函数站######################################################33
+#------------------------------------函数调用栈-----------------------------------------
+# 函数调用栈，
+"""
+解释器中断代码执行，并抛出一个异常对象
+并在函数调用栈，从上到下，层层寻找捕获该异常的代码，如果能找到就执行对应的代码
+如果不能找到，就一直找到最外层，抛出异常！
+处理过了，也应该上报！！要往上抛异常！
+"""
+# def f3():
+#     print("f3开始")
+#     try:
+#         b = 4/0
+#     except:
+#         print("处理F3异常")
+#         raise  #虽然F3处理了，但是还是要上报，在F2也要有异常捕获，否则还是全程抛错！
+#     print("f3结束")
+#
+#
+# def f2():
+#     print("f2开始")
+#     f3()
+#     print("f2结束")
+#
+# def f1():
+#     print("f1开始")
+#     f2()
+#     print("f1结束")
+# try:
+#     f1()
+# except:
+#     print("在调用处处理了一个异常。")
+
+"""自定义异常集成exception"""
+# class NameToolongError(Exception):
+#     pass
+# class NameTooshortError(Exception):   #集成类
+#     pass
+#
+# def input_name():
+#     name = input("请输入用户名：")
+#     if len(name) > 10:
+#         raise NameToolongError  #raise 把异常抛给调用方处理！
+#     elif len(name) < 5:
+#         raise NameTooshortError
+# try:
+#     input_name()
+# except NameToolongError:
+#     print("名字太长")
+# except NameTooshortError:
+#     print("名字太短")
+
+# 多线程和并发----------------------------------------------------------------------------------------------
+# 什么是线程，什么是进程，一个进程有多个线程，一个进程至少有一个线程
+# 线程共享创建它的地址空间；进程有自己的地址空间
+# 线程可以直接访问其他进程的数据段；进程有他自己的父进程的数据段副本
+# 线程可以和同进程的其他线程通讯；进程必须使用进程间的通讯来同其他进程通讯
+# 容易创建新线程；新进程需要父进程的复制
+# 线程可以对同一进程的线程进行相当大的控制；流程只能对子流程进行控制
+# 并发，逻辑上同事处理多个任务的能力，并行，物理上在同一时刻执行多个并发任务。
+import time,threading
+def foo(something):
+    for i in range(5):
+        time.sleep(2)
+        print("正在",something)
+        print("正在",something)
+
+T1 = threading.Thread(target=foo,args=["看电影"])
+T2 = threading.Thread(target=foo,args=["听音乐"])
+
+T1.start()
+T2.start()
+
+#--------------------------------啊时刻吗互相转换----------------------------
+# print(ord("刘"))
+# print(chr(21016))
+#
+# a = "ABC"
+# b = b"abc"   #字符串前加b,表示字符串以bytes类型进行存储。bytes类型中的每个字符都只占用一个字节，只能存英文
+# print(a,b)
+#-----------------------------------------------------------------------------------
+#通过encode方法，可以把中文转成bytes类型，encode可以把任何字符编辑成bytes类型
+# a = "刘帅奇"
+# print(a.encode("utf8"))   #看刘帅奇的utf8的encode形式
+# b = a.encode("utf8")       #实际执行encode
+# print(b.decode("utf8"))   #把上面的utf8形式解码成中文
+
+#----------------什么样的编码，就需要什么样的解码,怎么写入，就需要怎么读--------------------------------
+# with open("./a.txt", "w", encoding = "utf8") as f:
+#     f.write("新用户")
+#
+# with open("./a.txt", "r", encoding = "utf8") as f:
+#     a = f.read()
+#     print(a)
+# win是gbk,台湾日本是big5
+#-------------------
+# time = 6    #5
+# num = 10000  #12500
+# while time:
+#     num *= 1.25
+#     time -= 1
+#     print(num)
+
+#----------------------------------------------------------------------------
+#############################文件的读写#########################################
+'''文件的打开怕open,有返回值，可以赋值给变量'''
+# file_object = open(file_name,access_"r")
+# file_name:文件的路径，绝对路径和相对路径
+# access_mode:读，写，读加写，默认为读！
+# file_dir = r"D:\Python\存放一些简单文件\new 1.txt"      # 一定要指定后缀名
+# fire_object = open(file_dir)       #默认为r,文件的打开操作
+# print(type(fire_object))
+
+# 绝对路径，相对路径，带盘符的是绝对路径，相对路径不是从盘符来说的。
+#-----------------------------文件指针的概念----------------------------------------
+
+# 获取当前文件指针位置tell
+# file_dir = r"D:\Python\存放一些简单文件\new 1.txt"      # 一定要指定后缀名
+# fire_object = open(file_dir)        #默认为r,文件的打开操作
+# print(type(fire_object))
+# print(fire_object.tell())
+# #
+# '''从光标开始顺序操作，比如read，操作到哪里，文件指针就在哪里'''#重新打开的文件，指针刷新
+# print(fire_object.read(3))
+# print(fire_object.read(6))
+# print(fire_object.read())       #如果什么都不写，就默然全部读取
+#
+# '''养成好习惯，打开的文件一定要及时关闭'''
+# fire_object.close()
+# print(fire_object.read(6))      #关闭的文件无法继续读取
+
+#----------------------------------文件指针的移动，seek方法--------------------------------------
+"""seek0模式，默认模式"""
+# file_dir = r"D:\Python\存放一些简单文件\new 1.txt"      # 一定要指定后缀名
+# fire_object = open(file_dir)        #默认为r,文件的打开操作
+# # print(type(fire_object))
+# print(fire_object.tell())
+# print(fire_object.read(9))       #读到哪里，指针就在哪里
+# fire_object.seek(2)            #使用seek方法移动文件指针，0是seek的绝对模式，直接移动到指定位置2。默然模式0。
+# print(fire_object.read(7))     #因为指针位置在2，所以应该只读取小数点后面的位数
+
+
+""" "r" 只读模式不支持的1模式，1模式可以向后移动,r模式open打开主要txt，log文件"""
+# # 别的一些文件最好用”rb"模式打开，二进制模式打开！，打开后不是字符串！
+# file_dir = r"D:\Python\存放一些简单文件\new 1.txt"      # 一定要指定后缀名
+# fire_object = open(file_dir,"rb")        #rb二进制打开
+# # print(type(fire_object))
+# print(fire_object.tell())
+# print(fire_object.read(2))      #读到哪里，指针就在哪里
+# fire_object.seek(3,1)       #1模式是相对位置移动指针，从当前位置向后移动3个单位
+# print(fire_object.read(5))      #从指针移动到的位置再读五个单位
+
+"""此外还有2模式，也是绝对模式，从最后位置移动指针"""
+"""文件里面换行是两个元素的！！要注意"""
+
+
+#-------------------------------整行读-------------------------------------
+# file_dir = r"D:\Python\存放一些简单文件\new 1.txt"      # 一定要指定后缀名
+# fire_object = open(file_dir,"r")        #rb二进制打开
+# print(fire_object.readline())       #读一整行！也是有光标的，读到哪里光标在哪里。读出的是字符串
+# print(fire_object.readlines())      #读所有行，结果是一个列表list，会有换行符
+# '''如果想去掉换行符，可以用for进行遍历，再用替换replace，或者用下面的方式读！'''
+# fire_object.seek(0)         #把文件指针重新定位会起始位置
+# print(fire_object.read().splitlines())#返回的是去过换行符号的列表
+
+################################写模式，如果文件不存在会新建############################
+# '''如果文件不存在会新建！当用写模式打开文件，原有文件会消失！！！在保存之前还好，只是在内存里面！写入磁盘里面就完蛋了！'''
+# file_dir = r"D:\Python\存放一些简单文件\new 1.txt"      # 一定要指定后缀名
+# fire_object = open(file_dir,"w")
+# fire_object.write("12345")       # 写模式一定要写字符串进去，写在了内存，没有写在磁盘
+# fire_object.write("12345" + "\n")  #写入一行以后自动换行
+# fire_object.close()     #关闭的时候回直接保存
+# fire_object.flush()     #写入刷新，可以保存，这种方式写入没有换行
+
+
+#---------------------追加模式，不做任何清空操作，接着写-------------------------------------
+# fire = r"D:\Python\存放一些简单文件\linshi.txt"     #路径
+# f = open(fire,"a")    #追加模式，不做清空操作，所以此段代码每运行一次，就增加一段"abac"
+# f.write("abac")         #在可写的文件上写入字符串！
+# # print(f.read())     #只读文件不支持写，所有此条操作无用！
+# f.flush()       #保存已经写入的内容到硬盘！
+# f.close()       #关闭也会再次保存！！
+# re_fire = open(fire,"r")
+# print(re_fire.read())       #阅读重新打开的所有文件！
+
+#------------------------------文件的可读可写操作------------------------------
+""""r+:为了读写打开文件，如果文件不存在，会报错，文件指针在文件的开头
+    w+:为了读写打开文件，如果文件不存在，会新建，文件指针在文件的开头。重新打开文件，如果文件已经存在，文件会被清空。
+    a+:为了读写打开文件，如果文件不存在，会新建，文件指针永远在文件结尾
+
+"""
+"""                     文件的另一种写入方法，执行结束后自动运行close的写入方法  with open                  """
+
+# with open("D:\Python\存放一些简单文件\linshi.txt","r")  as f:
+#     fc = f.read()
+#     print(fc)
+
+#支持多种方式打开。
+# with open("D:\Python\存放一些简单文件\linshi.txt","a+")  as f,open (r"D:\Python\存放一些简单文件\new 1.txt","a+")  as f2:
+#     f.write("春江潮水连海平\n")
+#     f2.write("海上明月共潮生\n")
+#
+# f_open = open(r"D:\Python\存放一些简单文件\linshi.txt")
+# f2_open = open(r"D:\Python\存放一些简单文件\new 1.txt")
+# print(f_open.read() + f2_open.read())
