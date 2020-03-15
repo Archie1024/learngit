@@ -1,12 +1,12 @@
-print("开始")
-def get_sum(start,end,step=1):
-    """这就是那个让你没有面试机会的傻逼代码"""
-    zhonghe = 0
-    while start <= end:
-        zhonghe += start
-        start += step
-    print(zhonghe)
-print("结束啦")
+# print("开始")
+# def get_sum(start,end,step=1):
+#     """这就是那个让你没有面试机会的傻逼代码"""
+#     zhonghe = 0
+#     while start <= end:
+#         zhonghe += start
+#         start += step
+#     print(zhonghe)
+# print("结束啦")
 
 
 
@@ -225,3 +225,32 @@ print("结束啦")
 # checkline(luozhi)
 
 #---------------------------------------------------------------------------------------------------
+#  美国GDP20万亿美元，中国GDP14万亿美元。若美国GDP以每年3%的增长速度，中国GDP以5%的增长速度，求多少年以后，中国和美国GDP持平
+
+# def get_years_number(MM = 14,GM = 20,MP =0.05,GP =0.03):
+#     years_number = 0
+#     if MM * (1+MP) == GM * GP * (1+GP):
+#         years_number += 1
+#
+# year = 1
+# A = 14
+# B = 20
+# while True:
+#     if  A  * 1.05 >= B * 1.03:
+#         print(year)
+#         break
+#     else:
+#         A *= 1.05
+#         B *= 1.03
+#         year += 1
+
+def get_yearnum(C_GDP,A_GDP,C_p,A_p):
+    year = 0
+    while True:
+        if  C_GDP * (1 + C_p)**year >= A_GDP * (1 + A_p)**year:
+            print(year)
+            break
+        else:
+            year += 1
+
+get_yearnum(1,1.5,0.02,0.01)
