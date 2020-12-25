@@ -13,6 +13,9 @@
 # def qiefen_panduan(A):
 #     """切分组合坐标字符串并判断是否存在"""
 #     # 判断棋子横坐标是否在棋盘中存在直线
+
+
+test git
 #     realA = copy.deepcopy(A)
 #     AA = copy.deepcopy(A)
 #     action = len(AA)
